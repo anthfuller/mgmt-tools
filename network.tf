@@ -6,7 +6,7 @@ resource ibm_is_vpc "vpc2" {
   name = "myvpc2"
    }
 
-resource "ibm_tg_gateway" "new_tg_gw"{
+resource "ibm_tg_gateway" "new2_tg_gw"{
   name      = "terraform-office-tg"
   location  = "east-us"
   global    =  true
