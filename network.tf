@@ -8,7 +8,7 @@ resource ibm_is_vpc "vpc2" {
 
 resource "ibm_tg_gateway" "new2_tg_gw"{
   name      = "terraform-office-tg"
-  location  = "east-us"
+  location  = "us-east"
   global    =  true
   resource_group="6664a071c0b546deb4703269b54a5d9a"
 }
