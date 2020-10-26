@@ -5,11 +5,11 @@ variable "resource_group" {
   default = "Default"
 }
 variable "region" {
-  default = "eu-de"
+  default = "us-east"
 }
 variable "vpc_zone_names" {
   type    = list
-  default = ["eu-de-1"]
+  default = ["us-east-1"]
 }
 variable "flavors" {
   type    = list
