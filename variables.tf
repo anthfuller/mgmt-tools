@@ -9,7 +9,7 @@ variable "region" {
 }
 variable "vpc_zone_names" {
   type    = list
-  default = ["eu-de-1"]
+  default = ["frankfurt-1"]
 }
 variable "flavors" {
   type    = list
