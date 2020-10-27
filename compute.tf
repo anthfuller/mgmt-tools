@@ -24,7 +24,7 @@ resource "ibm_is_instance" "iac_test_instance" {
 
 resource null_resource "wait-4-cloudinit" {
 
-  depends_on = [ ibm_is_instance.mgmt_instance ]
+  depends_on = [ ibm_is_instance.iac_test_instance ]
   
   provisioner "remote-exec" {
     inline = [ "while [ ! -f '/root/cloudinit.done' ]; do echo 'waiting for userdata to complete...'; sleep 10; done" ]
