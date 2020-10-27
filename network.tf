@@ -14,7 +14,7 @@ resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
 
 resource "ibm_is_subnet" "mgmt_subnet" {
   name                     = "mgmt"
-  zone                     = "frankfurt-1"
+  zone                     = "eu-de-1"
   vpc                      = ibm_is_vpc.mgmt_vpc.id
   ipv4_cidr_block          = "10.243.0.0/18"
   resource_group           = data.ibm_resource_group.group.id
