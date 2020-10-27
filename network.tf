@@ -20,4 +20,3 @@ resource "ibm_tg_gateway" "new_tg_gw"{
   global    =  true
   resource_group="cf1794131ebd43efa0c468d35af45849"
    }
-}
