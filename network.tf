@@ -5,7 +5,7 @@ resource "ibm_is_vpc" "mgmt-vpc" {
 }
 
 resource "ibm_is_subnet" "mgmt-subnet" {
-  name                     = "mgmt1"
+  name                     = "mgmt"
   vpc                      = ibm_is_vpc.mgmt-vpc.id
   zone                     = "eu-de-1"
   ipv4_cidr_block          = "172.16.0.0/1"
