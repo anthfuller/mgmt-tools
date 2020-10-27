@@ -8,7 +8,7 @@ resource "ibm_is_subnet" "mgmt_subnet" {
   name                     = "mgmt"
   zone                     = var.vpc_zone_names[count.index]
   vpc                      = ibm_is_vpc.mgmt_vpc.id
-  ipv4_cidr_block          = "172.16.${format("%01s", count.index)}.0/26"
+  ipv4_cidr_block          = "10.240.0.0/24"
   resource_group           = data.ibm_resource_group.group.id
   depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
