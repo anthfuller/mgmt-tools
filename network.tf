@@ -1,15 +1,14 @@
-resource ibm_is_vpc "iac_iks_vpc" {
-  name = "${var.project_name}-${var.environment}-vpc"
+resource ibm_is_vpc "mgmt_tools_vpc" {
+  name = "mgmt-tools-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
 }
 
-resource "ibm_is_subnet" "iac_iks_subnet" {
-  count                    = local.max_size
-  name                     = "${var.project_name}-${var.environment}-subnet-${format("%02s", count.index)}"
-  zone                     = var.vpc_zone_names[count.index]
-  vpc                      = ibm_is_vpc.iac_iks_vpc.id
-  ipv4_cidr_block          = "172.26.${format("%01s", count.index)}.0/26"
+resource "ibm_is_subnet" "mgmt_tools_subnet" {
+  name                     = "mgmt_tools_subnet"
+  vpc                      = ibm_is_vpc.mgmt_tools_vpc.id
+  zone                     = "eu-de-1"
+  ipv4_cidr_block          = "172.16.0.0/1"
   # total_ipv4_address_count = 64
   resource_group           = data.ibm_resource_group.group.id
   
