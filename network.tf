@@ -1,5 +1,5 @@
 resource "ibm_is_vpc" "mgmt_vpc" {
-  name = "mgmt"
+  name = "mgmt-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
 }
