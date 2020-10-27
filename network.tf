@@ -1,5 +1,5 @@
 resource ibm_is_vpc "mgmt_tools_vpc" {
-  name = "mgmt-tools-prod"
+  name = "${var.project_name}-${var.environment}-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
 }
