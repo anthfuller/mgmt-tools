@@ -13,8 +13,9 @@ resource "ibm_is_subnet" "mgmt_subnet" {
    }
 
 resource "ibm_tg_gateway" "new_tg_gw"{
-  name      = "mgmt_prod-tg"
+  name      = "mgmt-tg"
   location  = "eu-de"
   global    =  true
   resource_group="cf1794131ebd43efa0c468d35af45849"
    }
+}
