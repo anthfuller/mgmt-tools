@@ -19,5 +19,5 @@ resource "ibm_tg_gateway" "new_tg_gw"{
   name      = "mgmt-tools-prod-tg"
   location  = "eu-de"
   global    =  true
-  resource_group="64474a4706f64480a1a25926de5f12dd"
+  resource_group="cf1794131ebd43efa0c468d35af45849"
  }
