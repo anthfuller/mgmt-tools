@@ -4,7 +4,7 @@ data "ibm_is_image" "mgmt_image" {
 
 resource "ibm_is_instance" "mgmt_instance" {
   name    = "${var.project_name}-${var.environment}-instance"
-  image   = data.ibm_is_image.mgmt_image.id
+  image   = data.ibm_is_image.mgmt_instance.id
   profile = var.profile
 
   primary_network_interface {
@@ -15,7 +15,7 @@ resource "ibm_is_instance" "mgmt_instance" {
 
   vpc  = ibm_is_vpc.mgmt_vpc.id
   zone = var.zone
-  keys = [ data.ibm_is_ssh_key.mgmt_key.id, ibm_is_ssh_key.public_key.id ]
+  keys = [ data.ibm_is_ssh_key.mgmt_instance.id, ibm_is_ssh_key.public_key.id ]
 
   user_data = file("${path.module}/scripts/setup.sh")
 
@@ -32,7 +32,7 @@ resource null_resource "wait-4-cloudinit" {
     connection {
       type        = "ssh"
       user        = "root"
-      host        = ibm_is_floating_ip.mgmt_floating_ip.address
+      host        = ibm_is_floating_ip.mgmt_instance_floating_ip.address
       private_key = tls_private_key.ssh_key_keypair.private_key_pem
     }
   }
