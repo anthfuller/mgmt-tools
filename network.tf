@@ -4,7 +4,7 @@ resource "ibm_is_vpc" "mgmt_tools_vpc" {
   address_prefix_management = "manual"
 }
 
-resource "ibm_is_subnet" "mgmt__tools_subnet" {
+resource "ibm_is_subnet" "mgmt_tools_subnet" {
   name                     = "mgmt_subnet"
   vpc                      = ibm_is_vpc.mgmt_tools_vpc.id
   zone                     = "eu-de-1"
