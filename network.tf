@@ -1,4 +1,4 @@
-resource ibm_is_vpc "mgmt_tools_vpc" {
+resource "ibm_is_vpc" "mgmt_tools_vpc" {
   name = "mgmt-tools-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
@@ -9,7 +9,6 @@ resource "ibm_is_subnet" "mgmt_tools_subnet" {
   vpc                      = ibm_is_vpc.mgmt_tools_vpc.id
   zone                     = "eu-de-1"
   ipv4_cidr_block          = "172.16.0.0/1"
-  # total_ipv4_address_count = 64
   resource_group           = data.ibm_resource_group.group.id
   
    }
