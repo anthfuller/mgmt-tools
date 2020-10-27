@@ -20,3 +20,27 @@ resource "ibm_is_subnet" "mgmt_subnet" {
   resource_group           = data.ibm_resource_group.group.id
   depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
+
+resource "ibm_is_security_group" "mgmt_security_group" {
+  name = "${var.project_name}-${var.environment}-sg-public"
+  vpc  = ibm_is_vpc.mgmt_vpc.id
+}
+
+resource "ibm_is_security_group_rule" "iac_test_security_group_rule_all_outbound" {
+  group     = ibm_is_security_group.iac_test_security_group.id
+  direction = "outbound"
+}
+
+resource "ibm_is_security_group_rule" "mgmt_security_group_rule_tcp_ssh" {
+  group     = ibm_is_security_group.mgmt_security_group.id
+  direction = "inbound"
+  tcp {
+    port_min = 22
+    port_max = 22
+  }
+}
+
+resource "ibm_is_floating_ip" "iac_test_floating_ip" {
+  name   = "${var.project_name}-${var.environment}-ip"
+  target = ibm_is_instance.iac_test_instance.primary_network_interface.0.id
+}
