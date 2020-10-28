@@ -4,6 +4,7 @@ data "ibm_is_image" "mgmt_image" {
 
 resource "ibm_is_instance" "mgmt_instance" {
   name    = "${var.project_name}-${var.environment}-instance"
+  resource_group  = data.ibm_resource_group.group.id
   image   = data.ibm_is_image.mgmt_image.id
   profile = var.profile
 
