@@ -22,6 +22,10 @@ variable "region" {
   default = "eu-de"
 }
 
+variable "zone" {
+  default = "eu-de-1"
+}
+
 variable "vpc_zone_names" {
   type    = list
   default = ["eu-de-1"]
