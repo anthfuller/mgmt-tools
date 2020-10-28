@@ -10,9 +10,8 @@ resource "ibm_is_subnet" "mgmt_subnet" {
   resource_group = data.ibm_resource_group.group.id
   zone            = var.zone
   vpc             = ibm_is_vpc.mgmt_vpc.id
-  ipv4_cidr_block = "10.243.0.0/18"
+  ipv4_cidr_block = var.mgmt_vpc
   # total_ipv4_address_count = "64"
-  
 }
 
 resource "ibm_is_security_group" "mgmt_security_group" {
