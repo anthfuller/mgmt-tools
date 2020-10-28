@@ -12,7 +12,6 @@ resource "ibm_is_subnet" "mgmt_subnet" {
   ipv4_cidr_block          = "172.26.${format("%01s", count.index)}.0/26"
   # total_ipv4_address_count = "64"
   
-  depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
 resource "ibm_is_security_group" "mgmt_security_group" {
