@@ -4,7 +4,7 @@ data "ibm_is_image" "mgmt_image" {
 
 resource "ibm_is_instance" "mgmt_instance" {
   name    = "${var.project_name}-${var.environment}-instance"
-  image   = data.ibm_is_image.mgmt_instance.id
+  image   = data.ibm_is_image.mgmt_image.id
   profile = var.profile
 
   primary_network_interface {
@@ -15,11 +15,11 @@ resource "ibm_is_instance" "mgmt_instance" {
 
   vpc  = ibm_is_vpc.mgmt_vpc.id
   zone = var.zone
-  keys = [ data.ibm_is_ssh_key.mgmt_vpc.id, ibm_is_ssh_key.public_key.id ]
+  keys = [ data.ibm_is_ssh_key.mgmt_ssh_key.id, ibm_is_ssh_key.public_key.id ]
 
   user_data = file("${path.module}/scripts/setup.sh")
 
-  tags = ["iac-${var.project_name}-${var.environment}"]
+  tags = ["mgmt-${var.project_name}-${var.environment}"]
 }
 
 resource null_resource "wait-4-cloudinit" {
