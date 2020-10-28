@@ -20,11 +20,6 @@ variable "resource_group" {
 variable "region" {
   default = "eu-de"
 }
-variable "vpc_zone_names" {
-  type    = list
-  default = ["eu-de-1"]
-}
-
-locals {
-  max_size = length(var.vpc_zone_names)
+variable "zone" {
+  default = "eu-de-1"
 }
