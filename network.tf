@@ -5,10 +5,14 @@ resource "ibm_is_vpc" "mgmt_vpc" {
 }
 
 resource "ibm_is_subnet" "mgmt_subnet" {
-  name            = "${var.project_name}-${var.environment}-subnet"
-  vpc             = ibm_is_vpc.mgmt_vpc.id
+  count           = local.max_size
+  name            = "${var.project_name}-${var.environment}-range${formate("%02s", count.index)}"
   zone            = var.zone
-  total_ipv4_address_count = "64"
+  vpc             = ibm_is_vpc.mgmt_vpc.id
+  ipv4_cidr_block          = "172.26.${format("%01s", count.index)}.0/26"
+  # total_ipv4_address_count = "64"
+  
+  depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
 resource "ibm_is_security_group" "mgmt_security_group" {
