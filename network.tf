@@ -4,6 +4,14 @@ resource "ibm_is_vpc" "mgmt_vpc" {
   address_prefix_management = "manual"
 }
 
+resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
+  count                     = local.max_size
+  name                      = "${var.project_name}-${var.environment}-subnet"
+  zone                      = var.zone
+  vpc                       = ibm_is_vpc.mgmt_vpc.id
+  cidr                      = "10.243.0.0/26"
+}
+
 resource "ibm_is_subnet" "mgmt_subnet" {
   count           = local.max_size
   name            = "${var.project_name}-${var.environment}-subnet"
