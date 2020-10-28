@@ -4,7 +4,7 @@ resource "ibm_is_vpc" "mgmt_vpc" {
   address_prefix_management = "manual"
 }
 
-resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
+resource "ibm_is_vpc_address_prefix" "mgmt_subnet_prefix" {
   count                     = local.max_size
   name                      = "${var.project_name}-${var.environment}-subnet"
   zone                      = var.zone
