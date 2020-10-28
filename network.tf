@@ -9,7 +9,7 @@ resource "ibm_is_subnet" "mgmt_subnet" {
   name            = "${var.project_name}-${var.environment}-subnet"
   zone            = var.zone
   vpc             = ibm_is_vpc.mgmt_vpc.id
-  ipv4_cidr_block          = "10.243.0.0/18"
+  ipv4_cidr_block          = "10.243.${format("%01s", count.index)}.0/18"
   # total_ipv4_address_count = "64"
   
 }
