@@ -25,6 +25,11 @@ variable "zone" {
   default = "eu-de-1"
 }
 
+variable "vpc_zone_names" {
+  type    = zone
+  default = ["eu-de-1"]
+}
+
 locals {
   max_size = length(var.vpc_zone_names)
 }
