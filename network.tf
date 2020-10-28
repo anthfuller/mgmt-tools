@@ -6,10 +6,10 @@ resource "ibm_is_vpc" "mgmt_vpc" {
 
 resource "ibm_is_subnet" "mgmt_subnet" {
   count           = local.max_size
-  name            = "${var.project_name}-${var.environment}-range${format("%02s", count.index)}"
+  name            = "${var.project_name}-${var.environment}-subnet"
   zone            = var.zone
   vpc             = ibm_is_vpc.mgmt_vpc.id
-  ipv4_cidr_block          = "172.26.${format("%01s", count.index)}.0/26"
+  ipv4_cidr_block          = "64"
   # total_ipv4_address_count = "64"
   
 }
