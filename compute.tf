@@ -9,7 +9,7 @@ resource "ibm_is_instance" "mgmt_instance" {
 
   primary_network_interface {
     name            = "eth0"
-    subnet          = ibm_is_subnet.mgmt_subnet[count.index]
+    subnet          = ibm_is_subnet.mgmt_subnet.id
     security_groups = [ibm_is_security_group.mgmt_security_group.id]
   }
 
