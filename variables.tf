@@ -26,7 +26,7 @@ variable "zone" {
 }
 
 variable "vpc_zone_names" {
-  type    = zone
+  type    = list
   default = ["eu-de-1"]
 }
 
