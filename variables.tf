@@ -15,7 +15,7 @@ variable "profile" {
 }
 
 variable "resource_group" {
-  default = "Default"
+  default = "mgm-tools-prod"
 }
 variable "region" {
   default = "eu-de"
