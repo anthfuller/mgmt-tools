@@ -1,6 +1,10 @@
 variable "project_name" {}
 variable "environment" {}
 
+variable "resource_group" {
+  default = "mgm-tools-prod"
+}
+
 variable "ssh_keyname" {
   default = ""
 }
@@ -14,9 +18,6 @@ variable "profile" {
   default = "cx2-2x4"
 }
 
-variable "resource_group" {
-  default = "mgm-tools-prod"
-}
 variable "region" {
   default = "eu-de"
 }
